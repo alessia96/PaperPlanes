@@ -10,7 +10,7 @@ public class PlaneController : MonoBehaviour
     public float rotationalSpeed;
 
     Rigidbody rigid;
-
+    Vector3 rotation;
     void Awake()
     {
         rigid = GetComponent<Rigidbody>();
@@ -23,9 +23,9 @@ public class PlaneController : MonoBehaviour
 
     void RotateMyBoi()
     {
-        Vector3 rotation = new Vector3(Input.GetAxis("Pitch"), Input.GetAxis("Yaw"), Input.GetAxis("Roll"));
-
-        rigid.AddRelativeTorque(rotation * rotationalSpeed);
+        rotation = new Vector3(Input.GetAxis("Pitch"), Input.GetAxis("Yaw"), Input.GetAxis("Roll"));
+        print(rotation);
+        transform.Rotate(rotation);
     }
 
 }
