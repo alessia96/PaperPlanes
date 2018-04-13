@@ -8,12 +8,14 @@ public class PlaneController : MonoBehaviour
 {
 
     public float rotationalSpeed;
+    public float speed;
 
     Rigidbody rigid;
     Vector3 rotation;
     void Awake()
     {
         rigid = GetComponent<Rigidbody>();
+        rigid.velocity = speed * transform.forward;
     }
 
     void FixedUpdate()
