@@ -19,6 +19,8 @@ public class PlaneController : MonoBehaviour
 
     public LayerMask windCollider;
     public LayerMask deadZone;
+    public LayerMask lightZone;
+    public LayerMask waterZone;
 
     void Awake()
     {
@@ -60,6 +62,16 @@ public class PlaneController : MonoBehaviour
         {
             transform.position = initialPos;
             transform.rotation = initialRot;
+        }
+
+        if (col.gameObject.layer == lightZone.value)
+        {
+
+        }
+
+        if (col.gameObject.layer == waterZone.value)
+        {
+            rigid.AddForce(new Vector3(0f, 5f, 0f));
         }
     }
 
