@@ -4,15 +4,13 @@ ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
-    100002: pasted__pCube1
     400000: //RootNode
-    400002: pasted__pCube1
     2100000: lambert1
-    2300000: pasted__pCube1
-    2300002: //RootNode
-    3300000: pasted__pCube1
-    3300002: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
     4300000: pasted__pCube1
+    7400000: Take 001
+    9500000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -44,11 +42,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-<<<<<<< HEAD
-    globalScale: 1
-=======
     globalScale: 0.5
->>>>>>> 1142b78c765e910ce6e9dd9a3e108f0a2c45563e
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
@@ -92,7 +86,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
