@@ -14,12 +14,17 @@ public class PlaneController : MonoBehaviour
 
     Rigidbody rigid;
     Vector3 rotation;
+    Vector3 initialPos;
+    Quaternion initialRot;
 
     public LayerMask windCollider;
+    public LayerMask deadZone;
 
     void Awake()
     {
         rigid = GetComponent<Rigidbody>();
+        initialPos = transform.position;
+        initialRot = transform.rotation;
     }
 
     void FixedUpdate()
@@ -50,6 +55,12 @@ public class PlaneController : MonoBehaviour
             
         }
 
+        //Dead Zone
+        if (col.gameObject.layer == deadZone.value)
+        {
+            transform.position = initialPos;
+            transform.rotation = initialRot;
+        }
     }
 
 }
