@@ -33,7 +33,6 @@ public class PlaneController : MonoBehaviour
     void FixedUpdate()
     {
         RotateMyBoi();
-        AdjustRotation();
 
         if (rainTriggered)
         {
@@ -51,21 +50,28 @@ public class PlaneController : MonoBehaviour
 
     void RotateMyBoi()
     {
-        rotation += new Vector3(Input.GetAxis("Pitch") * rotationalSpeed, Input.GetAxis("Yaw") * rotationalSpeed, Input.GetAxis("Roll") * rotationalSpeed);
+        rotation += new Vector3(Input.GetAxis("Pitch") * rotationalSpeed, Input.GetAxis("Yaw") * rotationalSpeed, 0);
         rotation.x = Mathf.Clamp(rotation.x, -rotationLimit.x, rotationLimit.x);
         rotation.y = Mathf.Clamp(rotation.y, -rotationLimit.y, rotationLimit.y);
         rotation.z = Mathf.Clamp(rotation.z, -rotationLimit.z, rotationLimit.z);
         transform.eulerAngles = rotation;
     }
 
-    void AdjustRotation()
-    {
-        //ToDo: make the plane auto rotate back to zero
-    }
 
     void UpdateTheVeloc()
     {
-        rigid.velocity = transform.forward * speed;
+        if (rotation.x > 30)
+        {
+            rigid.velocity = transform.forward * speed * 1.25f;
+        }
+        else if (rotation.x < -30)
+        {
+            rigid.velocity = transform.forward * speed * 0.75f;
+        }
+        else
+        {
+            rigid.velocity = transform.forward * speed;
+        }
     }
 
     void AddRainForce()
