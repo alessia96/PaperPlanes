@@ -22,6 +22,10 @@ public class PlaneController : MonoBehaviour
     public LayerMask lightZone;
     public LayerMask waterZone;
 
+    public bool rainTriggered;
+
+    public float forceOfRain;
+
     void Awake()
     {
         rigid = GetComponent<Rigidbody>();
@@ -32,7 +36,15 @@ public class PlaneController : MonoBehaviour
     void FixedUpdate()
     {
         RotateMyBoi();
-        UpdateTheVeloc();
+
+        if (rainTriggered)
+        {
+            AddRainForce();
+        }
+        else 
+        {
+            UpdateTheVeloc();
+        }
     }
 
     void RotateMyBoi()
@@ -49,8 +61,15 @@ public class PlaneController : MonoBehaviour
     {
         rigid.velocity = transform.forward * speed;
     }
-    void OnTriggerStay(Collider col)
+
+    void AddRainForce()
     {
+        rigid.AddForce(transform.up * forceOfRain);
+    }
+
+    void OnTriggerEnter(Collider col)
+    {
+        print("Colliding with" + col.name);
         //Wind Collision
         if(col.gameObject.layer == windCollider.value)
         {
@@ -71,7 +90,17 @@ public class PlaneController : MonoBehaviour
 
         if (col.gameObject.layer == waterZone.value)
         {
-            rigid.AddForce(new Vector3(0f, 5f, 0f));
+            rainTriggered = true;
+            print("triggered");
+        }
+    }
+
+    void OnTriggerExit(Collider col)
+    {
+        if(col.gameObject.layer == waterZone.value)
+        {
+            print("Out of water");
+            rainTriggered = false;
         }
     }
 
