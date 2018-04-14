@@ -17,10 +17,7 @@ public class PlaneController : MonoBehaviour
     Vector3 initialPos;
     Quaternion initialRot;
 
-    public LayerMask windCollider;
-    public LayerMask deadZone;
-    public LayerMask lightZone;
-    public LayerMask waterZone;
+    public int windCollider, deadZone, lightZone, waterZone;
 
     public bool rainTriggered;
 
@@ -71,24 +68,24 @@ public class PlaneController : MonoBehaviour
     {
         print("Colliding with" + col.name);
         //Wind Collision
-        if(col.gameObject.layer == windCollider.value)
+        if(col.gameObject.layer == windCollider)
         {
             
         }
 
         //Dead Zone
-        if (col.gameObject.layer == deadZone.value)
+        if (col.gameObject.layer == deadZone)
         {
             transform.position = initialPos;
             transform.rotation = initialRot;
         }
 
-        if (col.gameObject.layer == lightZone.value)
+        if (col.gameObject.layer == lightZone)
         {
 
         }
 
-        if (col.gameObject.layer == waterZone.value)
+        if (col.gameObject.layer == waterZone)
         {
             rainTriggered = true;
             print("triggered");
@@ -97,7 +94,7 @@ public class PlaneController : MonoBehaviour
 
     void OnTriggerExit(Collider col)
     {
-        if(col.gameObject.layer == waterZone.value)
+        if(col.gameObject.layer == waterZone)
         {
             print("Out of water");
             rainTriggered = false;
