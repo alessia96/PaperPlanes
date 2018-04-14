@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "com.unity.probuilder": "3.0.3",
+    "com.unity.probuilder": "3.0.4",
     "com.unity.postprocessing": "2.0.3-preview",
     "com.unity.ads": "exclude",
     "com.unity.analytics": "exclude",
@@ -8,5 +8,6 @@
     "com.unity.shadergraph": "1.1.2-preview",
     "com.unity.standardevents": "exclude",
     "com.unity.cinemachine": "2.1.12"
-  }
+  },
+   "registry": "http://staging-packages.unity.com"
 }
