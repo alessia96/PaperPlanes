@@ -7,7 +7,8 @@
     "com.unity.purchasing": "exclude",
     "com.unity.shadergraph": "1.1.3-preview",
     "com.unity.standardevents": "exclude",
-    "com.unity.cinemachine": "2.1.12"
+    "com.unity.cinemachine": "2.1.12",
+    "com.unity.render-pipelines.lightweight": "1.1.4-preview"
   },
   "registry": "http://staging-packages.unity.com"
 }
