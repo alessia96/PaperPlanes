@@ -18,11 +18,10 @@ public class PlaneController : MonoBehaviour
     Vector3 initialPos;
     Vector3 initialRot;
 
+    bool rainTriggered, windTriggered;
 
-    public int windCollider, deadZone, lightZone, waterZone;
-
-    public bool rainTriggered;
-    public float forceOfRain;
+    public int windZone, deadZone, lightZone, waterZone;
+    public float forceOfRain, forceOfWind;
 
     void Awake()
     {
@@ -40,7 +39,11 @@ public class PlaneController : MonoBehaviour
         {
             AddRainForce();
         }
-        else 
+        else if (windTriggered)
+        {
+            AddWindForce();
+        }
+        else
         {
             UpdateTheVeloc();
         }
@@ -70,14 +73,18 @@ public class PlaneController : MonoBehaviour
         rigid.AddForce(transform.up * -forceOfRain);
     }
 
+    void AddWindForce()
+    {
+        rigid.AddForce(transform.right * forceOfWind);
+    }
 
     void OnTriggerEnter(Collider col)
     {
         print("Colliding with" + col.name);
         //Wind Collision
-        if(col.gameObject.layer == windCollider)
+        if(col.gameObject.layer == windZone)
         {
-            
+            windTriggered = true;
         }
 
         //Dead Zone
@@ -88,17 +95,10 @@ public class PlaneController : MonoBehaviour
             transform.eulerAngles = rotation;
         }
 
-        //Lamp Effect
-        if (col.gameObject.layer == lightZone)
-        {
-            
-        }
-
         //Water effect
         if (col.gameObject.layer == waterZone)
         {
             rainTriggered = true;
-            print("triggered");
         }
     }
 
@@ -106,13 +106,12 @@ public class PlaneController : MonoBehaviour
     {
         if(col.gameObject.layer == waterZone)
         {
-            print("Out of water");
             rainTriggered = false;
         }
 
-        if (col.gameObject.layer == lightZone)
+        if(col.gameObject.layer == windZone)
         {
-            
+            windTriggered = false;
         }
     }
 
