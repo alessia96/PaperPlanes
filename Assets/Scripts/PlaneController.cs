@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+
 //Player controlled in each of the scenes
 public class PlaneController : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class PlaneController : MonoBehaviour
 
     Rigidbody rigid;
     Vector3 rotation;
+
+    public LayerMask windCollider;
+
     void Awake()
     {
         rigid = GetComponent<Rigidbody>();
@@ -28,6 +32,16 @@ public class PlaneController : MonoBehaviour
         rotation = new Vector3(Input.GetAxis("Pitch"), Input.GetAxis("Yaw"), Input.GetAxis("Roll"));
         print(rotation);
         transform.Rotate(rotation);
+    }
+
+    void OnTriggerStay(Collider col)
+    {
+        //Wind Collision
+        if(col.gameObject.layer == windCollider.value)
+        {
+            
+        }
+
     }
 
 }
