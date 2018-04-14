@@ -15,7 +15,8 @@ public class PlaneController : MonoBehaviour
     Rigidbody rigid;
     Vector3 rotation;
     Vector3 initialPos;
-    Quaternion initialRot;
+    Vector3 initialRot;
+
 
     public int windCollider, deadZone, lightZone, waterZone;
 
@@ -27,12 +28,13 @@ public class PlaneController : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody>();
         initialPos = transform.position;
-        initialRot = transform.rotation;
+        initialRot = transform.eulerAngles;
     }
 
     void FixedUpdate()
     {
         RotateMyBoi();
+        AdjustRotation();
 
         if (rainTriggered)
         {
@@ -51,7 +53,11 @@ public class PlaneController : MonoBehaviour
         rotation.y = Mathf.Clamp(rotation.y, -rotationLimit.y, rotationLimit.y);
         rotation.z = Mathf.Clamp(rotation.z, -rotationLimit.z, rotationLimit.z);
         transform.eulerAngles = rotation;
+    }
 
+    void AdjustRotation()
+    {
+        //ToDo: make the plane auto rotate back to zero
     }
 
     void UpdateTheVeloc()
@@ -61,8 +67,9 @@ public class PlaneController : MonoBehaviour
 
     void AddRainForce()
     {
-        rigid.AddForce(transform.up * forceOfRain);
+        rigid.AddForce(transform.up * -forceOfRain);
     }
+
 
     void OnTriggerEnter(Collider col)
     {
@@ -77,14 +84,17 @@ public class PlaneController : MonoBehaviour
         if (col.gameObject.layer == deadZone)
         {
             transform.position = initialPos;
-            transform.rotation = initialRot;
+            rotation = Vector3.zero;
+            transform.eulerAngles = rotation;
         }
 
+        //Lamp Effect
         if (col.gameObject.layer == lightZone)
         {
 
         }
 
+        //Water effect
         if (col.gameObject.layer == waterZone)
         {
             rainTriggered = true;
