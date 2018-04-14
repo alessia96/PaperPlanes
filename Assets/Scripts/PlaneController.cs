@@ -9,6 +9,7 @@ public class PlaneController : MonoBehaviour
 {
 
     public float rotationalSpeed;
+    public Vector3 rotationLimit;
     public float speed;
 
     Rigidbody rigid;
@@ -19,21 +20,28 @@ public class PlaneController : MonoBehaviour
     void Awake()
     {
         rigid = GetComponent<Rigidbody>();
-        rigid.velocity = speed * transform.forward;
     }
 
     void FixedUpdate()
     {
         RotateMyBoi();
+        UpdateTheVeloc();
     }
 
     void RotateMyBoi()
     {
-        rotation = new Vector3(Input.GetAxis("Pitch"), Input.GetAxis("Yaw"), Input.GetAxis("Roll"));
-        print(rotation);
-        transform.Rotate(rotation);
+        rotation += new Vector3(Input.GetAxis("Pitch") * rotationalSpeed, Input.GetAxis("Yaw") * rotationalSpeed, Input.GetAxis("Roll") * rotationalSpeed);
+        rotation.x = Mathf.Clamp(rotation.x, -rotationLimit.x, rotationLimit.x);
+        rotation.y = Mathf.Clamp(rotation.y, -rotationLimit.y, rotationLimit.y);
+        rotation.z = Mathf.Clamp(rotation.z, -rotationLimit.z, rotationLimit.z);
+        transform.eulerAngles = rotation;
+
     }
 
+    void UpdateTheVeloc()
+    {
+        rigid.velocity = transform.forward * speed;
+    }
     void OnTriggerStay(Collider col)
     {
         //Wind Collision
