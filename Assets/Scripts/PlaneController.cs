@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 
 
@@ -21,7 +22,6 @@ public class PlaneController : MonoBehaviour
     public int windCollider, deadZone, lightZone, waterZone;
 
     public bool rainTriggered;
-
     public float forceOfRain;
 
     void Awake()
@@ -91,7 +91,7 @@ public class PlaneController : MonoBehaviour
         //Lamp Effect
         if (col.gameObject.layer == lightZone)
         {
-
+            
         }
 
         //Water effect
@@ -108,6 +108,11 @@ public class PlaneController : MonoBehaviour
         {
             print("Out of water");
             rainTriggered = false;
+        }
+
+        if (col.gameObject.layer == lightZone)
+        {
+            
         }
     }
 
