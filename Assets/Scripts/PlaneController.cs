@@ -18,10 +18,12 @@ public class PlaneController : MonoBehaviour
     Vector3 initialPos;
     Vector3 initialRot;
 
-    bool rainTriggered, windTriggered;
+    bool rainTriggered, windTriggered, treeTriggered;
 
-    public int windZone, deadZone, lightZone, waterZone;
+    public int windZone, deadZone, lightZone, waterZone, treeZone, airplaneZone;
     public float forceOfRain, forceOfWind;
+
+    public GameObject paperEnv, airplane;
 
     void Awake()
     {
@@ -32,7 +34,13 @@ public class PlaneController : MonoBehaviour
 
     void FixedUpdate()
     {
-        RotateMyBoi();
+        if (!rigid.useGravity)
+        {
+            rigid.useGravity = true;
+        }
+
+        if (!treeTriggered)
+            RotateMyBoi();
 
         if (rainTriggered)
         {
@@ -41,6 +49,11 @@ public class PlaneController : MonoBehaviour
         else if (windTriggered)
         {
             AddWindForce();
+        }
+        else if (treeTriggered)
+        {
+            StartCoroutine(Stop());
+            rigid.constraints = RigidbodyConstraints.FreezeAll;
         }
         else
         {
@@ -96,15 +109,25 @@ public class PlaneController : MonoBehaviour
         //Dead Zone
         if (col.gameObject.layer == deadZone)
         {
-            transform.position = initialPos;
-            rotation = Vector3.zero;
-            transform.eulerAngles = rotation;
+            Reset();
         }
 
         //Water effect
         if (col.gameObject.layer == waterZone)
         {
             rainTriggered = true;
+        }
+
+        if (col.gameObject.layer == treeZone)
+        {
+            rigid.constraints = RigidbodyConstraints.FreezeAll;
+            StartCoroutine(Stop());
+        }
+
+        if (col.gameObject.layer == airplaneZone)
+        {
+            airplane.SetActive(true);
+            paperEnv.SetActive(false);
         }
     }
 
@@ -119,6 +142,24 @@ public class PlaneController : MonoBehaviour
         {
             windTriggered = false;
         }
+
+        if (col.gameObject.layer == treeZone)
+        {
+            rigid.constraints = RigidbodyConstraints.None;
+        }
+    }
+
+    IEnumerator Stop()
+    {
+        yield return new WaitForSeconds(3f);
+        Reset();
+    }
+
+    void Reset()
+    {
+        transform.position = initialPos;
+        rotation = Vector3.zero;
+        transform.eulerAngles = rotation;
     }
 
 }
