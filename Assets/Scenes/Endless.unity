@@ -92,7 +92,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 112000002, guid: 3895f12e32e8f402b86895a24cc88d4d,
     type: 2}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -9075,7 +9075,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &493190877
 Animator:
   serializedVersion: 3
@@ -13062,7 +13062,7 @@ Transform:
   m_LocalScale: {x: 4.000002, y: 4, z: 4.000002}
   m_Children: []
   m_Father: {fileID: 1853517851}
-  m_RootOrder: 79
+  m_RootOrder: 61
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &665375935
 MeshRenderer:
@@ -35605,6 +35605,7 @@ Transform:
   - {fileID: 1812835600}
   - {fileID: 1525494783}
   - {fileID: 241128928}
+  - {fileID: 665375934}
   - {fileID: 437122385}
   - {fileID: 2072620032}
   - {fileID: 514415084}
@@ -35623,10 +35624,10 @@ Transform:
   - {fileID: 1345542222}
   - {fileID: 728958277}
   - {fileID: 1670073265}
-  - {fileID: 665375934}
   - {fileID: 70594714}
   - {fileID: 1093096341}
   - {fileID: 1986513656}
+  - {fileID: 1984782479}
   - {fileID: 160291486}
   - {fileID: 2104951814}
   - {fileID: 523569248}
@@ -35636,7 +35637,6 @@ Transform:
   - {fileID: 1182218704}
   - {fileID: 1670086319}
   - {fileID: 2133105372}
-  - {fileID: 1984782479}
   - {fileID: 518748331}
   - {fileID: 1833501187}
   - {fileID: 875892938}
@@ -38654,7 +38654,7 @@ Transform:
   m_LocalScale: {x: 4.000002, y: 4, z: 4.000002}
   m_Children: []
   m_Father: {fileID: 1853517851}
-  m_RootOrder: 92
+  m_RootOrder: 83
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1984782480
 MeshRenderer:
