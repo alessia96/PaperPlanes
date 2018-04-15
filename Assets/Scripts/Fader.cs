@@ -5,28 +5,20 @@ public class Fader : MonoBehaviour {
 
     public static Fader instance;
 
-
-
     public Texture2D fadeOutTexture;
     public float fadeSpeed;
 
     private int drawDepth = -1000;
-    public float alpha = 1.0f;
+    public float alpha;
+    public float fadeDir;
 
-    private int fadeDir = -1;
-
-	private void Awake()
+	private void OnEnable()
 	{
-        if(instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
-        DontDestroyOnLoad(this.gameObject);
+        instance = this;
+        alpha = 1;
+        BeginFade(-1);
 	}
+
 	void OnGUI()
     {
         alpha += fadeDir * fadeSpeed * Time.deltaTime;
@@ -42,9 +34,4 @@ public class Fader : MonoBehaviour {
         return (fadeSpeed);
     }
 
-    void OnEnable()
-    {
-        // alpha = 1;
-        BeginFade(-1);
-    }
 }

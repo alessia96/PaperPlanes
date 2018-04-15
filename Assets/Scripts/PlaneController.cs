@@ -124,10 +124,10 @@ public class PlaneController : MonoBehaviour
             StartCoroutine(Stop());
         }
 
-        if (col.gameObject.layer == airplaneZone)
+        if (col.gameObject.layer == airplaneZone && !ChangingScene)
         {
-            airplane.SetActive(true);
-            paperEnv.SetActive(false);
+            StartCoroutine(ChangeScene());
+            float fade = Fader.instance.BeginFade(1);
         }
     }
 
