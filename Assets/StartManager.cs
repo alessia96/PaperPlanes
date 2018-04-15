@@ -13,7 +13,7 @@ public class StartManager : MonoBehaviour {
 
     public void QuitButton()
     {
-        
+        StartCoroutine(QuitGame());
     }
 
     public void InfoButton()
@@ -28,5 +28,13 @@ public class StartManager : MonoBehaviour {
 
         SceneManager.LoadScene("Endless");
 
+    }
+
+    IEnumerator QuitGame()
+    {
+        float fade = Fader.instance.BeginFade(1);   
+        yield return new WaitForSeconds(fade);
+
+        Application.Quit();
     }
 }
