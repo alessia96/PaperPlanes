@@ -23,7 +23,7 @@ public class StartManager : MonoBehaviour {
 
     IEnumerator StartGame()
     {
-        float fade = Fader.instance.BeginFade(1);
+        float fade = Fader.instance.BeginFade(1);   
         yield return new WaitForSeconds(fade);
 
         SceneManager.LoadScene("Endless");

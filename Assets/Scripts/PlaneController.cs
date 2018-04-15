@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
-
+using UnityEngine.SceneManagement;
 
 
 //Player controlled in each of the scenes
 public class PlaneController : MonoBehaviour
 {
+
+    public string nextScene;
 
     public float rotationalSpeed;
     public Vector3 rotationLimit;
@@ -24,6 +26,8 @@ public class PlaneController : MonoBehaviour
     public float forceOfRain, forceOfWind;
 
     public GameObject paperEnv, airplane;
+
+    bool ChangingScene;
 
     void Awake()
     {
@@ -126,8 +130,8 @@ public class PlaneController : MonoBehaviour
 
         if (col.gameObject.layer == airplaneZone && !ChangingScene)
         {
+            ChangingScene = true;
             StartCoroutine(ChangeScene());
-            float fade = Fader.instance.BeginFade(1);
         }
     }
 
@@ -162,4 +166,11 @@ public class PlaneController : MonoBehaviour
         transform.eulerAngles = rotation;
     }
 
+
+    IEnumerator ChangeScene()
+    {
+        float fade = Fader.instance.BeginFade(1);
+        yield return new WaitForSeconds(fade);
+        SceneManager.LoadScene(nextScene);
+    }
 }
