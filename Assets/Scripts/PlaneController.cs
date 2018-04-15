@@ -34,10 +34,12 @@ public class PlaneController : MonoBehaviour
         rigid = GetComponent<Rigidbody>();
         initialPos = transform.position;
         initialRot = transform.eulerAngles;
+        ChangingScene = false;
     }
 
     void FixedUpdate()
     {
+        print(ChangingScene);
         if (!rigid.useGravity)
         {
             rigid.useGravity = true;

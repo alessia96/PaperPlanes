@@ -92,7 +92,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 112000002, guid: 3895f12e32e8f402b86895a24cc88d4d,
     type: 2}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -4795,7 +4795,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d0c72082b50543db986f76ae03ec56e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: Start
+  nextScene: Airplane
   rotationalSpeed: 2
   rotationLimit: {x: 45, y: 45, z: 45}
   speed: 5
@@ -13062,7 +13062,7 @@ Transform:
   m_LocalScale: {x: 4.000002, y: 4, z: 4.000002}
   m_Children: []
   m_Father: {fileID: 1853517851}
-  m_RootOrder: 25
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &665375935
 MeshRenderer:
@@ -22740,8 +22740,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1228977608}
-  m_LocalRotation: {x: 0.13761084, y: -0, z: -0, w: 0.9904864}
-  m_LocalPosition: {x: 0, y: 3.17, z: -70.97}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2120993382}
@@ -35560,6 +35560,7 @@ Transform:
   - {fileID: 678252684}
   - {fileID: 1345734493}
   - {fileID: 1678675654}
+  - {fileID: 665375934}
   - {fileID: 764805036}
   - {fileID: 1246233927}
   - {fileID: 1807404426}
@@ -35569,8 +35570,8 @@ Transform:
   - {fileID: 1947222235}
   - {fileID: 1568565466}
   - {fileID: 389068884}
-  - {fileID: 665375934}
   - {fileID: 1583729058}
+  - {fileID: 1984782479}
   - {fileID: 1810772076}
   - {fileID: 1994114328}
   - {fileID: 871963397}
@@ -35597,7 +35598,6 @@ Transform:
   - {fileID: 647664557}
   - {fileID: 625381711}
   - {fileID: 63733657}
-  - {fileID: 1984782479}
   - {fileID: 22957671}
   - {fileID: 1029161236}
   - {fileID: 1610562174}
@@ -38654,7 +38654,7 @@ Transform:
   m_LocalScale: {x: 4.000002, y: 4, z: 4.000002}
   m_Children: []
   m_Father: {fileID: 1853517851}
-  m_RootOrder: 53
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1984782480
 MeshRenderer:
