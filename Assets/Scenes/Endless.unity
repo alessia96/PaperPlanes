@@ -4795,7 +4795,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d0c72082b50543db986f76ae03ec56e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: 
+  nextScene: Start
   rotationalSpeed: 2
   rotationLimit: {x: 45, y: 45, z: 45}
   speed: 5
@@ -13062,7 +13062,7 @@ Transform:
   m_LocalScale: {x: 4.000002, y: 4, z: 4.000002}
   m_Children: []
   m_Father: {fileID: 1853517851}
-  m_RootOrder: 61
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &665375935
 MeshRenderer:
@@ -35569,6 +35569,7 @@ Transform:
   - {fileID: 1947222235}
   - {fileID: 1568565466}
   - {fileID: 389068884}
+  - {fileID: 665375934}
   - {fileID: 1583729058}
   - {fileID: 1810772076}
   - {fileID: 1994114328}
@@ -35596,6 +35597,7 @@ Transform:
   - {fileID: 647664557}
   - {fileID: 625381711}
   - {fileID: 63733657}
+  - {fileID: 1984782479}
   - {fileID: 22957671}
   - {fileID: 1029161236}
   - {fileID: 1610562174}
@@ -35605,7 +35607,6 @@ Transform:
   - {fileID: 1812835600}
   - {fileID: 1525494783}
   - {fileID: 241128928}
-  - {fileID: 665375934}
   - {fileID: 437122385}
   - {fileID: 2072620032}
   - {fileID: 514415084}
@@ -35627,7 +35628,6 @@ Transform:
   - {fileID: 70594714}
   - {fileID: 1093096341}
   - {fileID: 1986513656}
-  - {fileID: 1984782479}
   - {fileID: 160291486}
   - {fileID: 2104951814}
   - {fileID: 523569248}
@@ -38654,7 +38654,7 @@ Transform:
   m_LocalScale: {x: 4.000002, y: 4, z: 4.000002}
   m_Children: []
   m_Father: {fileID: 1853517851}
-  m_RootOrder: 83
+  m_RootOrder: 53
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1984782480
 MeshRenderer:
